@@ -82,15 +82,15 @@
             <div class="flex justify-between gap-4">
                 <div class="flex gap-2">
                 <form id="delete-form-{{ $cliente->id }}" action="{{ route('cliente.delete', ['cliente' => $cliente->id]) }}" method="POST" style="display: none;">
-                    @csrf
-                    @method('DELETE')
-                    </form>
+                @csrf
+                @method('DELETE')
+            </form>
 
-                    <a href="#" onclick="event.preventDefault(); if(confirm('¿Estás seguro de que deseas eliminar este cliente?')) { document.getElementById('delete-form-{{ $cliente->id }}').submit(); }">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6" x-tooltip="tooltip">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </a>
+            <a href="#" onclick="event.preventDefault(); if(confirm('¿Estás seguro de que deseas eliminar este cliente?')) { document.getElementById('delete-form-{{ $cliente->id }}').submit(); }">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6" x-tooltip="tooltip">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+                </a>
 
                         <a href="{{ route('cliente.edit', ['cliente' => $cliente->id]) }}">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6" x-tooltip="tooltip">
