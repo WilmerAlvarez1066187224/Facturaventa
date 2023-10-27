@@ -50,36 +50,42 @@ class ClienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
- public function edit(Cliente $cliente)
-{
-      $clientes = Cliente::all();
-      
-    return view('cliente.editar', compact('cliente'));
-}
-
+    public function edit(Cliente $cliente)
+    {
+        $clientes = Cliente::all(); // No es necesario obtener todos los clientes si solo estás editando uno específico
+        return view('cliente.editar', compact('cliente'));//La última línea del método return view('cliente.editar', compact('cliente')); pasa el objeto del cliente recuperado a la vista cliente.editar. Utiliza la función compact para pasar la variable $cliente a la vista.
+    }
+    
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,  $cliente)
+    public function update(Request $request, $clienteId)
     {
-      $cliente = Cliente::find($cliente);
-      $cliente->nombre = $request->input('nombre');
-      $cliente->apellido = $request->input('apellido');
-      $cliente->telefono = $request->input('telefono');
-      $cliente->correo = $request->input('correo');
-      $cliente->direccion = $request->input('direccion');
-      $cliente->cedula = $request->input('cedula');
-
-      $cliente->save();
-      return redirect()->route('cliente.index')->with('message','votante Actualizado exitosamente');
+        $cliente = Cliente::find($clienteId); // Busca el cliente por su ID
+    
+        // Actualiza los campos del cliente con los datos del formulario
+        $cliente->update([
+            'nombre' => $request->input('nombre'),
+            'apellido' => $request->input('apellido'),
+            'telefono' => $request->input('telefono'),
+            'correo' => $request->input('correo'),
+            'direccion' => $request->input('direccion'),
+            'cedula' => $request->input('cedula')
+        ]);
+    
+        return redirect()->route('cliente.index')->with('message', 'Cliente actualizado exitosamente');
     }
+    
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($clienteId)
     {
-        //
+        $cliente = Cliente::find($clienteId); // Encuentra el cliente por su ID y elimínalo directamente si existe
+        $cliente->delete(); // Elimina el cliente
+        return redirect()->route('cliente.index')->with('success', 'Cliente eliminado exitosamente');
     }
+    
 }

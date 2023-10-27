@@ -36,11 +36,12 @@
         <tr>
             <th scope="col" class="px-6 py-4 font-medium text-gray-900">Nombre</th>
             <th scope="col" class="px-6 py-4 font-medium text-gray-900">Apellido</th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Dirección</th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Correo</th>
             <th scope="col" class="px-6 py-4 font-medium text-gray-900">Teléfono</th>
+            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Correo</th>
+            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Dirección</th>
             <th scope="col" class="px-6 py-4 font-medium text-gray-900">Cedula</th>
             <th scope="col" class="px-6 py-4 font-medium text-gray-900">Acciones</th>
+            
         </tr>
     </thead>
 
@@ -80,32 +81,26 @@
         <td class="px-6 py-4">
             <div class="flex justify-between gap-4">
                 <div class="flex gap-2">
-                    <a x-data="{ tooltip: 'Delete' }" href="#">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="h-6 w-6"
-                            x-tooltip="tooltip"
-                        >
-                            <!-- Icono de eliminación -->
+                <form id="delete-form-{{ $cliente->id }}" action="{{ route('cliente.delete', ['cliente' => $cliente->id]) }}" method="POST" style="display: none;">
+                    @csrf
+                    @method('DELETE')
+                    </form>
+
+                    <a href="#" onclick="event.preventDefault(); if(confirm('¿Estás seguro de que deseas eliminar este cliente?')) { document.getElementById('delete-form-{{ $cliente->id }}').submit(); }">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6" x-tooltip="tooltip">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </a>
-                    <a href="{{ route('cliente.edit', $cliente->id) }}">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="h-6 w-6"
-                        x-tooltip="tooltip"
-                    >
-                            <!-- Icono de edición -->
-                        </svg>
-                    </a>
+
+                        <a href="{{ route('cliente.edit', ['cliente' => $cliente->id]) }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6" x-tooltip="tooltip">
+                                <!-- Agrega aquí el código SVG para el icono de edición -->
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </a>
+                      
+
                 </div>
             </div>
         </td>
