@@ -14,7 +14,7 @@ class ClienteController extends Controller
    
     public function index()
 {
-    $clientes = Cliente::all(); // o cualquier lógica para obtener los clientes
+    $clientes = Cliente::paginate(8); // o cualquier lógica para obtener los clientes
     return view('cliente.index', compact('clientes'));
 }
 
@@ -84,7 +84,7 @@ class ClienteController extends Controller
     public function destroy($clienteId)
     {
         $cliente = Cliente::find($clienteId); // Encuentra el cliente por su ID y elimínalo directamente si existe
-        $cliente->delete(); // Elimina el cliente
+        $cliente->delete();    // Elimina el cliente
         return redirect()->route('cliente.index')->with('success', 'Cliente eliminado exitosamente');
     }
     

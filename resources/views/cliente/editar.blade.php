@@ -4,6 +4,9 @@
             {{ __('Editar Cliente') }}
         </h2>
     </x-slot>
+    <!-- En el encabezado de tu archivo HTML -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-u6uWQR0oLxlptZBw1zvHJlCFvffZZ9wl9vO+0a6YWdC+doM4b/EC1PVRpujHp8Y8" crossorigin="anonymous">
+
 
     <div class="py-12">
         <x-success-status class="mb-4" :status="session('success')" />
@@ -52,11 +55,17 @@
                         <x-input-error :messages="$errors->get('cedula')" class="mt-2" />
                     </div> 
 
-                    <div class="mt-4">
-                        <x-primary-button class="ml-4">
-                            {{ __('Actualizar Cliente') }}
-                        </x-primary-button>
-                    </div>
+                    <div class="mt-4 flex">
+    <x-primary-button class="ml-4">
+        {{ __('Actualizar Cliente') }}
+    </x-primary-button>
+
+    <a href="{{ route('cliente.index') }}" class="flex items-center text-gray-500 hover:underline focus:outline-none focus:underline transition animate-bounce ml-4">
+        <i class="fas fa-arrow-left mr-2"></i> <!-- Ícono de flecha izquierda de Font Awesome -->
+        {{ __('Regresar') }}
+    </a>
+</div>
+               </div>
                 </form>
             </div>
         </div>

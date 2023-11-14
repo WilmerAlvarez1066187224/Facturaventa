@@ -39,10 +39,9 @@ Route::controller(App\Http\Controllers\ClienteController::class)->group(function
     Route::get('/cliente','index')->name('cliente.index');
     Route::get('/add-cliente','create')->name('cliente.create');
     Route::post('/clientes', 'store')->name('cliente.store');
-    Route::get('/edit-cliente/{cliente}','edit')->name('cliente.edit');
-    Route::delete('/cliente/{cliente}', [ClienteController::class, 'destroy'])->name('cliente.delete');
-
-
+        Route::get('/edit-cliente/{cliente}','edit')->name('cliente.edit');
+        Route::put('/cliente/{cliente}','update')->name('cliente.update');
+        Route::delete('/cliente/{cliente}', [ClienteController::class, 'destroy'])->name('cliente.delete'); 
         
 
 });

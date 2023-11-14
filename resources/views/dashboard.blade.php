@@ -5,18 +5,34 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="rounded-lg bg-blue-100 p-4 mb-4">
-                        <p class="text-2xl font-semibold text-blue-800">Resumen de Ventas del Mes</p>
-                        <p class="text-lg text-blue-600">Ventas realizadas en el mes: <span class="font-bold"></span></p>
-                    </div>
-                    <p class="text-gray-700">{{ __("¡Ya has iniciado sesión!") }}</p>
-                </div>
-            </div>
+    <div class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
+        <!-- Ventas por Mes -->
+        <div class="flex-1 bg-blue-200 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+            <h2 class="text-xl font-semibold mb-4">Ventas por Mes</h2>
+            <p class="text-gray-700">Total de ventas este mes: <span class="font-bold text-blue-500">$150</span></p>
+            <!-- Otros detalles o gráficos relacionados con las ventas por mes -->
+        </div>
+
+        <!-- Ventas por Día -->
+        <div class="flex-1 bg-green-200 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+            <h2 class="text-xl font-semibold mb-4">Ventas por Día</h2>
+            <p class="text-gray-700">Ventas hoy: <span class="font-bold text-green-500">$20</span></p>
+            <!-- Otros detalles o gráficos relacionados con las ventas por día -->
+        </div>
+
+        <!-- Ventas por Año -->
+        <div class="flex-1 bg-yellow-200 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+            <h2 class="text-xl font-semibold mb-4">Ventas por Año</h2>
+            <p class="text-gray-700">Ventas este año: <span class="font-bold text-yellow-500">$1200</span></p>
+            <!-- Otros detalles o gráficos relacionados con las ventas por año -->
+        </div>
+
+        <!-- Cliente que más compró en el mes -->
+        <div class="flex-1 bg-purple-200 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+            <h2 class="text-xl font-semibold mb-4">Cliente Top del Mes</h2>
+            <p class="text-gray-700">Nombre del Cliente: <span class="font-bold text-purple-500">Cliente XYZ</span></p>
+            <p class="text-gray-700">Total Comprado: <span class="font-bold text-purple-500">$300</span></p>
+            <!-- Otros detalles o gráficos relacionados con el cliente que más compró -->
         </div>
     </div>
 </x-app-layout>
-
