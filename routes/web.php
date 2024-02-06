@@ -49,4 +49,5 @@ Route::controller(App\Http\Controllers\ClienteController::class)->group(function
 Route::controller(App\Http\Controllers\FacturaController::class)->group(function () {
     Route::get('/factura','index')->name('factura.index');
     Route::get('/add-factura','create')->name('factura.create');
+    Route::post('/guard-factura','store')->name('factura.store');
 });

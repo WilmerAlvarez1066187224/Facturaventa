@@ -60,21 +60,13 @@ class ClienteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $clienteId)
+    public function update(ClienteRequest $request, $clienteId)
     {
         $cliente = Cliente::find($clienteId); // Busca el cliente por su ID
     
         // Actualiza los campos del cliente con los datos del formulario
-        $cliente->update([
-            'nombre' => $request->input('nombre'),
-            'apellido' => $request->input('apellido'),
-            'telefono' => $request->input('telefono'),
-            'correo' => $request->input('correo'),
-            'direccion' => $request->input('direccion'),
-            'cedula' => $request->input('cedula')
-        ]);
-    
-        return redirect()->route('cliente.index')->with('message', 'Cliente actualizado exitosamente');
+        $cliente->update($request->all());
+        return redirect()->route('cliente.index')->with('success', 'Cliente actualizado exitosamente');
     }
     
 

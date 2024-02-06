@@ -55,9 +55,6 @@
                 <div class="form-group">
                     <label for="cliente_id" class="block font-medium text-sm text-gray-700">Seleccionar cliente:</label>
                      <select name="" id="" class="form-select mt-1 block w-full">
-                       
-
-
                    </select> 
                 </div>
 

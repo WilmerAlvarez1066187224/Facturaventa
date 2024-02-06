@@ -30,5 +30,18 @@ class ClienteRequest extends FormRequest
             'cedula' => 'required',
 
         ];
+    } public function messages()
+    {
+        return [
+
+            'nombre.required'=>'El nombre es requerido',
+            'apellido.required'=>'El apellido es requerido',
+            'telefono.required'=>'El telefono es requerido',
+            'correo.required'=>'El correo es requerido',
+            'direccion.required'=>'La direccion es requerida',
+            'cedula.required'=>'La cedula es requerida',
+            
+            
+        ];
     }
 }

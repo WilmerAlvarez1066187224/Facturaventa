@@ -6,6 +6,7 @@
     </x-slot>
 
     <div class="py-12">
+    <x-success-status class="mb-4" :status="session('message')" />
 
    
 
